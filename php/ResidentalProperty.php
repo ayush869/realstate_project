@@ -1,5 +1,4 @@
-
-<?php include './db.php';?>
+<?php include './db.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -17,43 +16,13 @@
 </head>
 
 <body>
-  <?php include './header.php'; ?>
-  <script type="text/javascript">
-    window.addEventListener("scroll", function() {
-      var header = document.querySelector("header");
-      header.classList.toggle("sticky", window.scrollY > 0);
-    })
-  </script>
+  <?php include './header.php';
 
-  <!--login-->
-  <div id="id01" class="modal">
 
-    <form class="modal-content animate" action="/action_page.php" method="post">
-      <div class="imgcontainer">
-        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-        <img src="Images/logo2.png">
-      </div>
+  echo '<!--login-->';
+  include './login.php';
 
-      <div class="container">
-        <label for="uname"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="uname" required>
-
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required>
-
-        <button type="submit">Login</button>
-        <label>
-          <input type="checkbox" checked="checked" name="remember"> Remember me
-        </label>
-      </div>
-
-      <div class="container" style="background-color:#f1f1f1">
-        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-        <span class="psw">Forgot <a href="#">password?</a></span>
-      </div>
-    </form>
-  </div>
-
+  ?>
   <script>
     // Get the modal
     var modal = document.getElementById('id01');
@@ -70,32 +39,20 @@
   <div class="categories2">
     <div class="container2">
       <h2>Residental Property</h2>
-      <div class="row2">
-        <?php
-        $record=mysqli_query($conn,'SELECT * FROM `property` WHERE property_type="residental"');
-        if(mysqli_num_rows($record)>0){
-          while($record_data=mysqli_fetch_assoc($record)){
-            $img=$record_data['img1'];
-            $location=$record_data['location'];
-            $price=$record_data['price'];
-
-        echo'
-        <div class="col-5 remove">
-          <div class="card">
-            <a href=""><img src="'.$img.'" alt="" style="width:250px"></a>
-            <div class="container">
-              <h4 class="location"><b>'.$location.'t</b></h4>
-              <h5>&#x20B9; '.$price.' Cr</h5>
-            </div>
-          </div>
-        </div>';
-               } }?>
-      </div>
+      <form action="./pdetail.php" method="post">
+        <div class="row2">
+          <?php
+          $record = mysqli_query($conn, 'SELECT * FROM `property` WHERE property_type="residental"');
+          include './card.php';
+          ?>
+        </div>
+      </form>
     </div>
+  </div>
 
-    <!---------Footer---------->
+  <!---------Footer---------->
 
-    <?php include './footer.php'; ?>
+  <?php include './footer.php'; ?>
 
 </body>
 <script src="../script.js"></script>

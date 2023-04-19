@@ -16,3 +16,9 @@
                     <li><button onclick="document.getElementById('id01').style.display='block'"class="navbtn">Login</button></li>  
                 </ul>
             </header>
+            <script type="text/javascript">
+                window.addEventListener("scroll",function(){
+                    var header = document.querySelector("header");
+                    header.classList.toggle("sticky", window.scrollY > 0);
+                })
+            </script>     
