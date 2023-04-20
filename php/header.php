@@ -2,7 +2,7 @@
            <img src="../Images/logo2.png" class="logo">
                 <ul>
                   <li><input type="text" placeholder="SearchProperty" id="Psearch" onkeyup="searchProperty()"></li>
-                    <li><a href="frontpage.html">HOME</a></li>
+                    <li><a href="./frontpage.php">HOME</a></li>
                     <li><div class="dropdown">
                       <a><span>PROPERTY TYPE</span></a>
                       <div class="dropdown-content">

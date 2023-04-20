@@ -762,9 +762,19 @@ span.psw {
 }
 .row-9 {
   align-items: right;
-  padding: 50px;
+  padding: 3px;
   border: 2px solid black;
   margin: 10px;
+  width:max-content;
+  
+}
+.column-9 {
+  align-items: center;
+  padding:10px;
+  border: 2px solid rgb(125, 125, 125);
+  margin: 10px;
+  height:50px;
+  width:250px;
   
 }
 
