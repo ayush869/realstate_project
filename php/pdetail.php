@@ -1,4 +1,7 @@
-<?php include './db.php';?>
+<?php include './db.php';
+
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,25 +15,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <style>
+  #Psearch{
+    display: none;
+  }
+</style>
 </head>
     <body>
-        <header>
-            <img src="../Images/logo2.png" class="logo">
-                <ul>
-                    <li><a href="frontpage.html">HOME</a></li>
-                    <li><div class="dropdown">
-                        <a><span>PROPERTY TYPE</span></a>
-                        <div class="dropdown-content">
-                            <a href="ResidentalProperty.html">Residental</a>
-                            <a href="CommercialProperty.html">Commercial</a>
-                            <a href="PlotsProperty.html">Plots/Land</a>
-                        </div>
-                      </div></li>
-                    <li><a href="#">RENT PROPERTY</a></li>
-                    <li><a href="#">ABOUT</a></li>   
-                    <li><button onclick="document.getElementById('id01').style.display='block'"class="navbtn">Login</button></li>  
-                </ul>
-            </header>
+<?php include './header.php';?>
  
     
         <!--login-->
@@ -44,10 +36,10 @@
           
               <div class="container">
                 <label for="uname"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="uname" required>
+                <input type="text" placeholder="Enter Username" name="uname" requi#4863A0>
           
                 <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw" required>
+                <input type="password" placeholder="Enter Password" name="psw" requi#4863A0>
                   
                 <button type="submit">Login</button>
                 <label>
@@ -75,42 +67,71 @@
           </script>
 
 <!--main cource-->
-<div class="categories2">
+<?php
+
+if(isset($_POST['id'])) {
+  $id = $_POST['id'];
+  $record=mysqli_query($conn,"SELECT * FROM `property` WHERE id='$id'") or die("failed query");
+  if(mysqli_num_rows($record)>0){
+    while($record_data=mysqli_fetch_assoc($record)){
+  
+  $img1=$record_data['img1'];
+  $img2=$record_data['img2'];
+  $img3=$record_data['img3'];
+  $location=$record_data['location'];
+  $bhk=$record_data['bhk'];
+  $property_type=$record_data['property_type'];
+  $furnishing=$record_data['furnishing_status'];
+  $rating=$record_data['rating'];
+  $parking=$record_data['parking'];
+  $carpet_area=$record_data['carpet_area'];
+  $security=$record_data['gate_security'];
+  $building_name=$record_data['building_name'];
+  $price=$record_data['price'];
+  $description=$record_data['owner_description'];
+echo '<div class="categories2">
     <div class="container2">
             <div class="row">
                 <div class="column">
-                    <img src="../Images/oberoi/ob1.png" height="200px width=100px">
-                
+                    <img src="'.$img1.'" height="200px width=100px">
                 </div>
+
               <div class="column">
-                <h2>For Sale</h2>              
+                <h2>Overview</h2>              
                 <table class="row-9">
                   <tr>
-                        <td class="column-9"><h4><i class="fa fa-bed"></i>Location<h4> </td>
-                        <td class="column-9"><h4><i class="fa fa-bed"></i>Rating</h4></td>
+                        <td class="column-9"><h4><i class="fa fa-map-marker-alt"  style="color: #4863A0"></i>Location : '.$location.' <h4> </td>
+                        <td class="column-9"><h4><i class="fa fa-star"  style="color: #4863A0"></i>Rating : '.$rating.'</h4></td>
                   </tr>
                   <tr>
-                        <td class="column-9"><h4><i class="fa fa-bed"></i>BHK</h4></td>
-                        <td class="column-9"><h4><i class="fa fa-car"></i>Parking</h4></td>
+                        <td class="column-9"><h4><i class="fa fa-home"  style="color: #4863A0"></i>BHK : '.$bhk.'</h4></td>
+                        <td class="column-9"><h4><i class="fa fa-car"  style="color: #4863A0"></i>'.$parking.'</h4></td>
                   </tr>
                   <tr>
-                        <td class="column-9"><h4><i class="fa fa-bed"></i>Property Type</h4></td>
-                        <td class="column-9"><h4><i class="fa fa-bed"></i>Carpet Area</h4></td>
+                        <td class="column-9"><h4><i class="fa fa-home"  style="color: #4863A0"></i>Property Type : '.$property_type.'</h4></td>
+                        <td class="column-9"><h4><i class="fa fa-building"  style="color: #4863A0"></i>Carpet Area : '.$carpet_area.'</h4></td>
                   </tr>
-                  <tr>
-                        <td class="column-9"><h4><i class="fa fa-bed"></i>Furnishing Status</h4></td>
+                  <tr> 
+                        <td class="column-9"><h4><i class="fa fa-couch"  style="color: #4863A0"></i>Furnishing Status : '.$furnishing.'</h4></td>
+                        <td class="column-9"><h4><i class="fa fa-user-shield"  style="color: #4863A0"></i>Security : '.$security.'</h4></td>
                   </tr>
-                </table>
-                
-                   
-                </div>
-                
-            </div>
-            </div>          
-         
-            </div>
-            </div>
+          </table> 
+                      
+      </div>              
+    </div>
 
+              <hr>
+                <h2>'.$building_name.'</h2>
+                <h3>&#8377; Price : '.$price.'</h3>
+                <hr>
+                <h3>Desciption</h3>
+                <p>'.$description.'</p>
+                <a href="" class="btn">Enquiry Now &#10097;</a>
+
+             
+  </div>                  
+</div>';
+  } } }?>
 <!---------Footer---------->
 
     <?php include './footer.php'?>

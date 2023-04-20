@@ -22,29 +22,18 @@ if(mysqli_num_rows($record)>0){
 ?>
 
 <script>
-function redirectDetails(img, location, price) {
+function redirectDetails(id) {
   var form = document.createElement("form");
   form.setAttribute("method", "post");
   form.setAttribute("action", "pdetails.php");
 
   var input1 = document.createElement("input");
   input1.setAttribute("type", "hidden");
-  input1.setAttribute("name", "img");
-  input1.setAttribute("value", img);
+  input1.setAttribute("name", "id");
+  input1.setAttribute("value", id);
   form.appendChild(input1);
 
-  var input2 = document.createElement("input");
-  input2.setAttribute("type", "hidden");
-  input2.setAttribute("name", "location");
-  input2.setAttribute("value", location);
-  form.appendChild(input2);
-
-  var input3 = document.createElement("input");
-  input3.setAttribute("type", "hidden");
-  input3.setAttribute("name", "price");
-  input3.setAttribute("value", price);
-  form.appendChild(input3);
-
+ 
   document.body.appendChild(form);
   form.submit();
 }

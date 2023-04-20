@@ -14,6 +14,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+  <script>
+      
+function redirectDetails(id) {
+    let form = document.createElement("form");
+    form.setAttribute("method", "post");
+    form.setAttribute("action", "pdetail.php");
+  
+    let input1 = document.createElement("input");
+    input1.setAttribute("type", "hidden");
+    input1.setAttribute("name", "id");
+    input1.setAttribute("value", id);
+    form.appendChild(input1);
+  
+   
+    document.body.appendChild(form);
+    form.submit();}
+  </script>
 </head>
 
 <body>
