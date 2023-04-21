@@ -3,32 +3,21 @@
 <head>
     <meta charset="UTF-8">
           <title>SkyWay</title>
-    <link rel="stylesheet" href="Style0.css">
+    <link rel="stylesheet" href="../Style0.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <style>
+  #Psearch{
+    display: none;
+  }
+</style>
 </head>
-    <body>
-        <header>
-            <img src="Images/logo2.png" class="logo">
-                <ul>
-                    <li><a href="frontpage.html">HOME</a></li>
-                    <li><div class="dropdown">
-                       <a><span>PROPERTY TYPE</span></a>
-                        <div class="dropdown-content">
-                            <a href="ResidentalProperty.html">Residental</a>
-                            <a href="CommercialProperty.html">Commercial</a>
-                            <a href="PlotsProperty.html">Plots/Land</a>
-                        </div>
-                      </div></li>
-                    <li><a href="#">RENT PROPERTY</a></li>
-                    <li><a href="#">ABOUT</a></li>   
-                    <li><button onclick="document.getElementById('id01').style.display='block'"class="navbtn">Login</button></li>  
-                </ul>
-            </header>
+    <body style="margin-bottom:3rem;">
+      <?php include './header.php' ;?>
             <script type="text/javascript">
                 window.addEventListener("scroll",function(){
                     var header = document.querySelector("header");
@@ -78,7 +67,7 @@
           </script>
 
           <!--main cource-->
-          <div class="categories">
+          <div class="categories" style="margin-top: 8rem;">
              <div class="container">
              <div class="headeraboout">
                 <h2 >About Us</h2>
@@ -88,14 +77,14 @@
         </div>
                 <div class="row">
                     <div class="col-9">
-                       <img src="Images/profile/ayush.jpeg" alt="" style="width:250px">
+                       <img src="../Images/profile/ayush.jpeg" alt="" style="width:250px">
                             <div class="container">
                               <h2><b>Ayush Maurya</b></h2> 
                                
                             </div>
                         </div>          
                     <div class="col-9">
-                       <img src="Images/profile/rohan.jpg" alt="" style="width:250px">
+                       <img src="../Images/profile/rohan.jpg" alt="" style="width:250px">
                             <div class="container">
                               <h2><b>Rohan Gupta</b></h2> 
                              </div>
@@ -138,35 +127,6 @@
 
 <!---------Footer---------->
 
-    <div class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="footer-col-1">
-                    <h3>Our Banner</h3>
-                    <p>BUY OR SELL A PROPERTY.</p>
-                </div>
-                <div class="footer-col-2">
-                    <img src="Images/logo2.png" >
-                </div>
-
-
-
-                <!--social links-->
-                <div class="footer-col-3">
-                    <h3>Followup LINK</h3>
-                    <ul>
-                        <a href="#" class="fa fa-facebook"></a>
-                        <a href="#" class="fa fa-twitter"></a>
-                        <a href="#" class="fa fa-google"></a>
-                        <a href="#" class="fa fa-linkedin"></a>
-                        <a href="#" class="fa fa-youtube"></a>
-                        <a href="#" class="fa fa-instagram"></a>
-                    </ul>
-                </div>
-            </div>
-             <hr>
-                <p class="copyright">© 2022-23 SkyWay Pvt. Ltd.</p>
-            </div>
-        </div>
+    <?php include './footer.php';?>
     </body> 
 </html>

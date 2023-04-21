@@ -12,7 +12,7 @@
                       </div>
                     </div></li>
                     <li><a href="#">RENT PROPERTY</a></li>
-                    <li><a href="AboutUs.html">ABOUT</a></li>   
+                    <li><a href="./AboutUs.php">ABOUT</a></li>   
                     <li><button onclick="document.getElementById('id01').style.display='block'"class="navbtn">Login</button></li>  
                 </ul>
             </header>
