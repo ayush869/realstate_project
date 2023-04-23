@@ -777,6 +777,11 @@ span.psw {
   width:300px;
   
 }
+.loginform {
+  border: 2px solid rgb(47, 46, 46);
+  padding: 20px;
+  align-items: center;
+}
 
 
 

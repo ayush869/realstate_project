@@ -1,6 +1,11 @@
 <?php
 include './db.php';
+
+if(!isset($_SESSION['username'])){
+  header('Location:./registration.php');
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,74 +17,71 @@ include './db.php';
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">             
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
+
+   
+
 </head>
+
 <style>
-  #Psearch{
+  #Psearch {
     display: none;
   }
 </style>
+
 <body style="margin-top: 108px;">
   <?php include './header.php'; ?>
-  <script type="text/javascript">
-    window.addEventListener("scroll", function() {
-      var header = document.querySelector("header");
-      header.classList.toggle("sticky", window.scrollY > 0);
-    })
-  </script>
 
-  <!--login-->
-  <div id="id01" class="modal">
+  <!--login popup-->
 
-    <form class="modal-content animate" action="/action_page.php" method="post">
-      <div class="imgcontainer">
-        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-        <img src="../Images/logo2.png">
-      </div>
-
+  <div id="login-popup" class="modal">
+    <form class="modal-content animate" action="" method="">
+    <div class="imgcontainer">
+          <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+          <img src="../Images/logo2.png">
+        </div>
       <div class="container">
         <label for="uname"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="uname" required>
+        <input type="text" placeholder="Enter Username" name="uname" requi#4863A0>
 
         <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required>
+        <input type="password" placeholder="Enter Password" name="psw" requi#4863A0>
 
         <button type="submit">Login</button>
         <label>
           <input type="checkbox" checked="checked" name="remember"> Remember me
         </label>
       </div>
-
       <div class="container" style="background-color:#f1f1f1">
         <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-        <span class="psw">Forgot <a href="#">password?</a></span>
+        <span class="psw">Doesn't have id!<a href="./registration.php">Register</a></span>
       </div>
     </form>
   </div>
-
   <script>
-    // Get the modal
-    var modal = document.getElementById('id01');
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-      if (event.target == modal) {
-        modal.style.display = "none";
+     var modal = document.getElementById('login-popup');
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
       }
-    }
   </script>
+  
 
-  <!--main cource-->
+
+  <!--main content(1)-->
   <div class="categories">
     <div class="container">
       <div class="row">
         <div class="col-2">
           <h1>Owning a home is a keystone of wealth…<br> both financial affluence and <br> emotional security!</h1>
           <p>The house you looked at today and wanted to think about until tomorrow may be the same <br>house someone looked at yesterday and will buy today...............</p>
-
         </div>
+
         <div class="col-2">
           <img src="../Images/Building1.png">
         </div>
@@ -89,7 +91,7 @@ include './db.php';
   </div>
 
 
-  <!------categories------>
+  <!------Main content (2)------>
 
   <div class="categories">
     <div class="container">
@@ -112,7 +114,8 @@ include './db.php';
     <hr>
   </div>
 
-  <!--------featured project ------->
+  <!--------Main property------->
+
   <div class="categories">
     <div class="container">
       <h2>On Going Projects</h2>
@@ -157,36 +160,25 @@ include './db.php';
 
       <h2>Commercial</h2>
       <div class="row">
-        <?php 
-        $record=mysqli_query($conn,'SELECT * FROM `property` WHERE property_type="commercial"');
-
-        include './frontcard.php'?>
+        <?php
+        $record = mysqli_query($conn, 'SELECT * FROM `property` WHERE property_type="commercial"');
+        include './frontcard.php' ?>
       </div>
 
       <h2>Residential</h2>
-
       <div class="row">
-      <?php 
-        $record=mysqli_query($conn,'SELECT * FROM `property` WHERE property_type="residental"');
-
-      include './frontcard.php'?>
-
-
+        <?php
+        $record = mysqli_query($conn, 'SELECT * FROM `property` WHERE property_type="residental"');
+        include './frontcard.php' ?>
       </div>
 
       <h2>Plots</h2>
       <div class="row">
-      <?php
-      $record=mysqli_query($conn,'SELECT * FROM `property` WHERE property_type="plots"');
-
-      include './frontcard.php'?>
-
-      <?php ?>
-
+        <?php
+        $record = mysqli_query($conn, 'SELECT * FROM `property` WHERE property_type="plots"');
+        include './frontcard.php' ?>
       </div>
-
-
-
+      <?php ?>
     </div>
   </div>
 
