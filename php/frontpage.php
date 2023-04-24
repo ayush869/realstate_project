@@ -20,7 +20,19 @@ if(!isset($_SESSION['username'])){
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-
+  <script>
+        function redirectDetails(id) {
+          let form = document.createElement("form");
+            form.setAttribute("method", "post");
+            form.setAttribute("action", "pdetail.php");
+          let input1 = document.createElement("input");
+            input1.setAttribute("type", "hidden");
+            input1.setAttribute("name", "id");
+            input1.setAttribute("value", id);
+            form.appendChild(input1);
+          document.body.appendChild(form);
+        form.submit();}
+      </script>
 
    
 
@@ -34,43 +46,6 @@ if(!isset($_SESSION['username'])){
 
 <body style="margin-top: 108px;">
   <?php include './header.php'; ?>
-
-  <!--login popup-->
-
-  <div id="login-popup" class="modal">
-    <form class="modal-content animate" action="" method="">
-    <div class="imgcontainer">
-          <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-          <img src="../Images/logo2.png">
-        </div>
-      <div class="container">
-        <label for="uname"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="uname" requi#4863A0>
-
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" requi#4863A0>
-
-        <button type="submit">Login</button>
-        <label>
-          <input type="checkbox" checked="checked" name="remember"> Remember me
-        </label>
-      </div>
-      <div class="container" style="background-color:#f1f1f1">
-        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-        <span class="psw">Doesn't have id!<a href="./registration.php">Register</a></span>
-      </div>
-    </form>
-  </div>
-  <script>
-     var modal = document.getElementById('login-popup');
-      // When the user clicks anywhere outside of the modal, close it
-      window.onclick = function(event) {
-        if (event.target == modal) {
-          modal.style.display = "none";
-        }
-      }
-  </script>
-  
 
 
   <!--main content(1)-->
@@ -108,7 +83,6 @@ if(!isset($_SESSION['username'])){
           <img src="../Images/oberoi/oberoi3.png">
         </div>
         <p>Located on the western suburbs of the city, Goregaon East is a prime residential locality that hubs residential colonies like Gokuldham and Aarey Colony. The neighborhood locality of Goregaon east includes Malad East, Jogeshwari East, and Sanjay Gandhi National park. In the Key real estate developers in this region are Oberoi Realty </p>
-        <a href="" class="btn">Visit Now &#10097;</a>
       </div>
     </div>
     <hr>
@@ -162,21 +136,21 @@ if(!isset($_SESSION['username'])){
       <div class="row">
         <?php
         $record = mysqli_query($conn, 'SELECT * FROM `property` WHERE property_type="commercial"');
-        include './frontcard.php' ?>
+        include './card.php' ?>
       </div>
 
       <h2>Residential</h2>
       <div class="row">
         <?php
         $record = mysqli_query($conn, 'SELECT * FROM `property` WHERE property_type="residental"');
-        include './frontcard.php' ?>
+        include './card.php' ?>
       </div>
 
       <h2>Plots</h2>
       <div class="row">
         <?php
         $record = mysqli_query($conn, 'SELECT * FROM `property` WHERE property_type="plots"');
-        include './frontcard.php' ?>
+        include './card.php' ?>
       </div>
       <?php ?>
     </div>

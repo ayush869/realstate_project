@@ -1,5 +1,4 @@
 <?php
-
 // include the database connection file
 include './db.php';
 
@@ -21,8 +20,6 @@ if(isset($_POST['registration'])){
     // check if the passwords match
     if($password != $repassword){
         echo "<script>alert('Passwords do not match. Please try again.')</script>";
-    header("Location: ./registration.php");
-
         exit;
     }
 
@@ -31,6 +28,7 @@ if(isset($_POST['registration'])){
     $result = mysqli_query($conn,$sql_query);
     if(mysqli_num_rows($result) > 0){
         echo "<script>alert('Username already exists. Please choose a different one.')</script>";
+        header('Location:./login.php');
         exit;
     }
 
